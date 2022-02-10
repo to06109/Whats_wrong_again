@@ -1,57 +1,60 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
+import axios from 'axios' //restAPI
 // import { useParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import Dropdown from 'react-bootstrap/Dropdown'
+import { Link, useHistory } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import '../css/Login.css'
+import HomeSearch from '../components/Home/HomeSearch'
 
 function Login() {
-  const [id, setId] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  let history = useHistory()
 
-  const onIdHandler = (event) => {
-    setId(event.currentTarget.value)
+  const onEmailHandler = (event) => {
+    setEmail(event.currentTarget.value)
   }
   const onPasswordHandler = (event) => {
     setPassword(event.currentTarget.value)
   }
 
   const onSubmit = (event) => {
-    const USERID = localStorage.getItem('id')
-    const USERPASS = localStorage.getItem('password')
-
-    if ((id === USERID) & (password === USERPASS)) {
-      console.log('로그인 성공')
-    } else {
-      console.log('로그인 실패')
-    }
-
     event.preventDefault()
-    // setDisabled(true)
-    // await new Promise((r) => setTimeout(r, 1000))
-    // if (
-    //   USER.find((user) => user.email === email && user.password === password)
-    // ) {
-    //   const currentUser = USER.find((user) => user)
-    //   setLogin(true)
-    //   localStorage.setItem('currentUser', JSON.stringify(currentUser))
-    // } else {
-    //   alert('정보가 없습니다.')
-    // }
-    // setDisabled(false)
+    axios({
+      url: '/login',
+      method: 'post',
+      data: {
+        email: email,
+        password: password,
+      },
+
+      baseURL: 'http://localhost:8080',
+    }).then(function (response) {
+      // console.log(response)
+      if (response.data == 'success') {
+        history.push('/')
+        alert('로그인 성공!')
+      } else {
+        alert('로그인 실패!')
+      }
+    })
   }
   return (
     <div className="all">
+      <div className="full-container flex">
+        <HomeSearch />
+      </div>
       <div className="loginregister">
         <div>
           <form>
             <div>
               <input
-                type="text"
-                onChange={onIdHandler}
-                value={id}
+                name="email"
+                type="email"
+                placeholder="이메일"
+                value={email}
+                onChange={onEmailHandler}
                 className="loginregister__input"
-                placeholder="아이디"
               />
             </div>
             <div>
