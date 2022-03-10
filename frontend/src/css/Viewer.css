@@ -1,0 +1,36 @@
+.initbox {
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;
+    border: 1px solid black;
+}
+
+.viewflex {
+    display: flex;
+    flex-direction: row;
+    background-color: aliceblue;
+    border: 1px solid black;
+    align-items: flex-end;
+}
+
+.ViewErrorName {
+    height: 100px;
+    flex-grow: 1;
+    /*padding: 25px 25px;*/
+    background-color: aliceblue;
+    border: 1px solid black;
+}
+
+#debateBtnId {
+    height: 50px;
+}
+
+
+.debateBtn {
+    /*에러명 작성칸 여백조절*/
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+
+
+

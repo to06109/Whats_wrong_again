@@ -5,7 +5,7 @@ import React, {useState} from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 
-function HomeSearch() {
+function HomeSearch_login() {
     return (
         <div>
             {/* 검색창쪽 전체 컨테이너 */}
@@ -42,13 +42,13 @@ function HomeSearch() {
                                 className="search"
                                 type="search"
                                 placeholder="     에러를 검색하세요"
-                                aria-label="HomeSearch"
+                                aria-label="HomeSearch_login"
                             />
                             <button className="search-button">Search</button>
                         </form>
                     </div>
                     <div className="flex-container center">
-                        <Link to= "login"><button className="logout">login</button></Link>
+                        <button className="logout">logout</button>
                     </div>
                 </div>
             </div>
@@ -57,4 +57,4 @@ function HomeSearch() {
     )
 }
 
-export default HomeSearch
+export default HomeSearch_login

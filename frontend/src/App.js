@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css' //부트스트랩
 import React, { useState, useEffect } from 'react'
+import UserInfo from "./routes/UserInfo";
 import Detail from './routes/Detail'
 import Home from './routes/Home'
 import Login from './routes/Login'
@@ -8,7 +9,6 @@ import Register from './routes/Register'
 import PostWrite from './routes/PostWrite'
 import Viewer from './routes/Viewer'
 function App() {
-
   return (
       <div>
 
@@ -28,6 +28,9 @@ function App() {
             </Route>
             <Route path="/viewer">
               <Viewer />
+            </Route>
+            <Route path="/userinfo">
+              <UserInfo />
             </Route>
             <Route path="/">
               <Home />

@@ -1,18 +1,33 @@
 // import { useEffect, useState } from 'react'
 // import Movie from '../components/Movie'
 import Homecate from '../components/Home/HomeCategory'
-import HomeSearch from '../components/Home/HomeSearch'
+import HomeSearch_login from '../components/Home/HomeSearch_login'
 import HomeMypage from '../components/Home/HomeMyPage'
 import HomeBoard from '../components/Home/HomeBoard'
 import Button from "react-bootstrap/Button";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import HomeSearch_logout from "../components/Home/HomeSearch_logout";
 function Home() {
+  const [showing, setShowing] = useState(false);
+  const isLogin = localStorage.getItem('login-token');
+
+  //로그인 인증
+  const Login_test = () => {
+    if (isLogin != null) {
+      setShowing(true);
+    }
+  };
+  useEffect(Login_test, []);
+
+
   return (
       <div  className="flex-container center full">
         <div className="full-container flex">
-          <HomeSearch />
+          <div>
+          {showing ? <HomeSearch_logout /> : <HomeSearch_login />}
+          </div>
           <div className="flex-container space-between post">
             <Homecate />
             <HomeBoard />

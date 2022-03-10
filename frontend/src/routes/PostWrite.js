@@ -1,13 +1,13 @@
 import Editor from '../components/Editorpost'
 import Homecate from '../components/Home/HomeCategory'
-import HomeSearch from '../components/Home/HomeSearch'
+import HomeSearch_login from '../components/Home/HomeSearch_login'
 import HomeMypage from '../components/Home/HomeMyPage'
 
 function PostWrite() {
   return(
       <div  className="flex-container center full">
         <div className="full-container flex">
-          <HomeSearch />
+          <HomeSearch_login />
           <div className="flex-container space-between post">
             <Homecate />
             <Editor />

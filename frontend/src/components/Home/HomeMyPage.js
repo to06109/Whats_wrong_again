@@ -1,23 +1,23 @@
-import Dropdown from 'react-bootstrap/Dropdown'
 import '../../css/Search.css'
-import { Link } from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 
-const drop_style = {
-    'border-bottom': '2px solid darkred',
-    color: 'gray',
-    'background-color': 'white',
-    'border-color': 'aliceblue',
-    'font-size': '25px',
-}
+
+
 
 function HomeMypage() {
+    let history = useHistory();
+
+    const onMypageHandler = (event) => {
+        history.push("/userinfo");
+    }
+
     return (
         <div>
             <div className="box"></div>
             {/* 메인우측 */}
             <div className="full-container center mypage">
                 <div className="mypage-box">
-                    <img className="user-img" src="img/user.png" />
+                    <img onClick={onMypageHandler} className="user-img" src="img/user.png" />
                     <h2>Login</h2>
                 </div>
                 <div className="mypage-box">

@@ -20,12 +20,15 @@ import colorSyntax from '@toast-ui/editor-plugin-color-syntax'
 //Viewer
 import Viewer from '@toast-ui/editor/dist/toastui-editor-viewer'
 import '@toast-ui/editor/dist/toastui-editor-viewer.css'
+import {useHistory} from "react-router-dom";
 
 function EditorPost() {
     //에디터를 가리킴
     const editorRef = useRef()
+    const history = useHistory()
     // const viewerRef = useRef()
 
+    //post 버튼 누르면 localStorage에 저장
     const btnClickListener = () => {
         const editorInstance = editorRef.current.getInstance()
         const getContent_md = editorInstance.getMarkdown()
@@ -38,8 +41,11 @@ function EditorPost() {
         // console.log(getContent_html)
 
         localStorage.setItem('paragraph', getContent_html)
+
+        history.push("/viewer")
     }
 
+    //cancel 버튼 누르면 내용 보여줌
     const View = () => {
         const test = document.querySelector('#viewer')
 
@@ -56,44 +62,39 @@ function EditorPost() {
     return (
         <div>
             <h1 className="title">에러 작성</h1>
-            <div className="full-container flex">
-                <div className="flex-container flex">
-                    <div className="box2">에러명</div>
-                    <input
-                        className="post_error_name"
-                        type="search"
-                        aria-label="HomeSearch"
-                    />
-                </div>
-                <div className="flex-container flex">
-                    <div className="box2">카테고리</div>
-                    <input
-                        className="post_error_name"
-                        type="search"
-                        aria-label="HomeSearch"
-                    />
+            <div className="full-container">
+                <div className="full-container">
+                    <div className="flex-container">
+                        <div className="box2">에러명</div>
+                        <input
+                            className="post_error_name"
+                            type="search"
+                            aria-label="HomeSearch_login"
+                        />
+                    </div>
+                    <div className="flex-container">
+                        <div className="box2">카테고리</div>
+                        <input
+                            className="post_error_name"
+                            type="search"
+                            aria-label="HomeSearch_login"
+                        />
+                    </div>
                 </div>
                 <div>
                     <Editor
                         previewStyle="vertical"
-                        height="40vh"
+                        height="50vh"
                         initialEditType="markdown"
                         initialValue="내용을 입력하세요."
                         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
                         ref={editorRef}
                     />
                 </div>
-
+                <div className="flex-container-inline">
                 <button onClick={btnClickListener} type="submit" className="submitBtn">
                     Post
                 </button>
-                <button onClick={View} className="cancelBtn">
-                    Cancel
-                </button>
-
-                <div>
-                    <h1> TOAST UI Viewer 만들기 </h1>
-                    <div id="viewer"></div>
                 </div>
             </div>
         </div>

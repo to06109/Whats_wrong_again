@@ -4,11 +4,14 @@ import axios from 'axios' //restAPI
 import { Link, useHistory } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import '../css/Login.css'
-import HomeSearch from '../components/Home/HomeSearch'
+import HomeSearch_login from '../components/Home/HomeSearch_login'
 
-function Login() {
+function Login(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  //로그인 토큰 예시
+  // const login_token_ex = "abcdefg";
+
   let history = useHistory()
 
   const onEmailHandler = (event) => {
@@ -28,21 +31,29 @@ function Login() {
         password: password,
       },
 
-      baseURL: 'http://localhost:8080',
+      baseURL: 'http://localhost:3000',
     }).then(function (response) {
       // console.log(response)
       if (response.data == 'success') {
+
+        //로그인토큰 예시
+        localStorage.setItem('login-token', email);
+
         history.push('/')
         alert('로그인 성공!')
       } else {
         alert('로그인 실패!')
       }
+      // if (response.data['ACCESS_TOKEN']) {
+      //   localStorage.setItem('login-token', response.data['ACCESS_TOKEN']);
+      // }
     })
   }
+
   return (
     <div className="all">
       <div className="full-container flex">
-        <HomeSearch />
+        <HomeSearch_login />
       </div>
       <div className="loginregister">
         <div>

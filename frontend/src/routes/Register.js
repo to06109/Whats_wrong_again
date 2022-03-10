@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button'
 // import '../css/Register.css'
 import axios from 'axios'
 import { Link, useHistory } from 'react-router-dom'
-import HomeSearch from '../components/Home/HomeSearch'
+import HomeSearch_login from '../components/Home/HomeSearch_login'
 
 function Register() {
   const [email, setEmail] = useState('')
@@ -45,8 +45,9 @@ function Register() {
           phone: phone,
         },
 
-        baseURL: 'http://localhost:8080',
+        baseURL: 'http://localhost:3000',
       }).then(function (response) {
+        console.log(response)
         if (response.data == 'success') {
           //회원가입 성공 시 로그인 화면으로 이동
           history.push('/login')
@@ -61,7 +62,7 @@ function Register() {
   return (
     <div className="all">
       <div className="full-container flex">
-        <HomeSearch />
+        <HomeSearch_login />
       </div>
 
       <div className="loginregister">

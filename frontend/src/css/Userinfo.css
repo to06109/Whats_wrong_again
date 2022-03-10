@@ -1,0 +1,66 @@
+.container-full {
+    /*세로배치*/
+    margin: 10px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    background-color: aliceblue;
+    font-size: 24px;
+}
+.container-full.input-info {
+    width: 30%;
+ }
+.container-full.center {
+    /* 가운데 정렬 */
+    margin:0 auto;
+}
+
+
+.container-flex {
+    /* 가로배치 */
+    display: inline-flex;
+    margin: 10px;
+     border: 1px solid lightgray;
+    border-radius: 10px;
+     background-color: aliceblue;
+    font-size: 24px;
+}
+.container-flex.button-pos{
+    margin-left: 55%;
+}
+.container-flex.input-info {
+    width: 30%;
+}
+.container-flex.center {
+    align-content: center;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.input {
+    margin-top: 60px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.button-userinfo {
+    width: 170px;
+    height: 60px;
+    background-color: rgb(56, 56, 56);
+    color: white;
+    border: gray;
+    border-radius: 10px;
+    margin: 80px 30px 50px 30px;
+}
+
+.img__box {
+
+}
+
+.initbox {
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;
+    border: 1px solid black;
+}
