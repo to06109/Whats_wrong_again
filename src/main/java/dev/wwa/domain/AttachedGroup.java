@@ -3,9 +3,11 @@ package dev.wwa.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.FetchType.*;
 
@@ -13,14 +15,18 @@ import static javax.persistence.FetchType.*;
 @Getter @Setter
 public class AttachedGroup {
 
-    @EmbeddedId
-    private AttachedGroupId attachedGroupId;
+    @Id @GeneratedValue
+    @Column(name = "attached_group_id")
+    private Long id;
 
+    @OneToOne(mappedBy = "attached_group", fetch = LAZY)
+    private Posts post;
+
+    @OneToMany
+    @JoinColumn(name = "attached_group")
+    private List<Attached> attached = new ArrayList<>();
+
+    @NotNull
     private String attached_path;
 
-    @OneToOne(mappedBy = "attachedGroup", fetch = LAZY)
-    private Error error;
-
-    @OneToOne(mappedBy = "attachedGroup", fetch = LAZY)
-    private Solution solution;
 }
