@@ -11,7 +11,6 @@ import Viewer from './routes/Viewer'
 function App() {
   return (
       <div>
-
         <Router>
           <Switch>
             <Route path="/login">

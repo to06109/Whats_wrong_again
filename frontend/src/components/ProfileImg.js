@@ -1,91 +1,23 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-
-
+import "../css/Userinfo.css"
 
 function ProfileImg() {
-    let state;
-    state = {
-        detailImageFile: null,
-        detailImageUrl: null,
-    }
-
-    function setState(param) {
-        state.detailImageFile = param.detailImageFile
-        state.detailImageUrl = param.detailImageUrl
-    }
-    const [files, setFiles] = useState();
-
-    useEffect(() => {
-        preview();
-
-        return () => preview();
-    })
+    const [fileURL, setFileURL] = useState("img/profile_init.jpg");
 
     const onLoadFile = (e) => {
-        const file = e.target.files;
-        console.log(file);
-        setFiles(file);
+        const imageFile = e.target.files[0];
+        const imageUrl = URL.createObjectURL(imageFile);
+        setFileURL(imageUrl)
     }
 
-    const setImageUrl = ({result}) => {
-        setState({detailImageFile: files[0], detailImageUrl: result});
-    }
-
-    const preview = () => {
-        if (!files) return false;
-
-        // const imgEl = document.querySelector('.img__box');
-        const reader = new FileReader();
-
-        console.log(reader);
-
-        reader.onload = function () {
-            setImageUrl({result: reader.result});
-        };
-        // reader.onload = () =>
-        //     (imgEl.style.backgroundImage = `url(${reader.result})`);
-
-        reader.readAsDataURL(files[0]);
-    }
-
-    //이미지 서버에 전송(formdata 형태)
-    const editProfile = (e) => {
-        const formdata = new FormData();
-        formdata.append('uploadImage', files[0]);
-        // /* key 확인하기 */
-        // for (let key of formdata.keys()) {
-        //     console.log(key);
-        // }
-        //
-        // /* value 확인하기 */
-        // for (let value of formdata.values()) {
-        //     console.log(value);
-        // }
-        //
-        // axios({
-        //     url: '/userinfo',
-        //     method: 'post',
-        //     headers: {
-        //         'content-type': 'multipart/form-data',
-        //     },
-        //     data: formdata,
-        //
-        //     baseURL: 'http://localhost:3000',
-        // })
-
-
-    }
     return (
-        <div>
-            {state.detailImageFile && (
-                <div className="image_area">
-                    <img src = {state.detailImageUrl}/>
+        <div className="profile">
+                <div>
+                    <img className="image_area" src={fileURL}/>
                 </div>
-            )}
-
+            <label for="image">프로필 사진 업로드</label>
             <input type="file" id="image" accept="img/*" onChange={onLoadFile}/>
-            <button onClick={editProfile}>사진 변경</button>
         </div>
     )
 }

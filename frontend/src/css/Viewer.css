@@ -1,6 +1,9 @@
-.initbox {
-    width: 100%;
-    height: 100%;
+.initbox2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*width: 60%;*/
+    /*height:80%;*/
     background-color: aliceblue;
     border: 1px solid black;
 }
@@ -13,12 +16,37 @@
     align-items: flex-end;
 }
 
-.ViewErrorName {
+.ErrorNameDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     height: 100px;
+
+    /*에러명+스크랩 div와 토론제의 버튼 공간차지 비율 맞춤*/
     flex-grow: 1;
-    /*padding: 25px 25px;*/
+
+    /*내부공간 유지*/
+    padding: 25px 25px;
+
     background-color: aliceblue;
     border: 1px solid black;
+}
+
+.ErrorName {
+    /*문자열 길이에 따른 줄바꿈*/
+    word-break:break-all;
+    /*스크랩버튼과 공간차지 비율 맞춤*/
+    flex-grow: 1;
+
+    background-color: aliceblue;
+    border: 1px solid black;
+}
+
+.scrape {
+    text-align: center;
+    border: 1px solid gray;
+    width: 50px;
+    height: 50px;
 }
 
 #debateBtnId {
@@ -31,6 +59,8 @@
     flex-shrink: 0;
     margin-left: 10px;
 }
+
+
 
 
 

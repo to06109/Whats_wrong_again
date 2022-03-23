@@ -17,12 +17,7 @@ function Userinfo() {
         setPhone(event.currentTarget.value)
     }
 
-
-    // const onSubmit = (event) => {
-    //     console.log(name, email, phone)
-    // }
-
-    // 현재 로그인됨 아이디도 보내줘야함
+    // 현재 로그인된 아이디도 보내줘야함, 변경하기 버튼 투르면 이미지 파일도 저장해야함
     const onSubmit = (event) => {
         event.preventDefault()
         axios({
@@ -50,8 +45,9 @@ function Userinfo() {
 <div className="initbox">
     <div className="container-full">
         <h1 className="title">회원정보 수정</h1>
-        <p>프로필 사진</p>
+        <div className="profile_title">
         <ProfileImg />
+        </div>
 
         <div className="container-flex">
             <div className="container-full input-info center">
@@ -76,9 +72,9 @@ function Userinfo() {
         <div className="container-flex button-pos">
             <button className="button-userinfo">비밀번호 변경</button>
             <button
-                    type="submit"
-                    onClick={onSubmit}
-                    className="button-userinfo">변경하기</button>
+                type="submit"
+                onClick={onSubmit}
+                className="button-userinfo">변경하기</button>
         </div>
 
     </div>

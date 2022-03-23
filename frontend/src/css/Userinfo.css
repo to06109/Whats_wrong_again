@@ -1,13 +1,13 @@
 .container-full {
     /*세로배치*/
     margin: 10px;
-    border: 1px solid lightgray;
+    /*border: 1px solid lightgray;*/
     border-radius: 10px;
-    background-color: aliceblue;
+    /*background-color: aliceblue;*/
     font-size: 24px;
 }
 .container-full.input-info {
-    width: 30%;
+    width: 35%;
  }
 .container-full.center {
     /* 가운데 정렬 */
@@ -18,14 +18,14 @@
 .container-flex {
     /* 가로배치 */
     display: inline-flex;
-    margin: 10px;
-     border: 1px solid lightgray;
+    margin: 50px;
+     /*border: 1px solid lightgray;*/
     border-radius: 10px;
-     background-color: aliceblue;
+     /*background-color: aliceblue;*/
     font-size: 24px;
 }
 .container-flex.button-pos{
-    margin-left: 55%;
+    margin-left: 45%;
 }
 .container-flex.input-info {
     width: 30%;
@@ -54,13 +54,46 @@
     margin: 80px 30px 50px 30px;
 }
 
-.img__box {
-
-}
-
 .initbox {
     width: 100%;
     height: 100%;
     background-color: aliceblue;
     border: 1px solid black;
+}
+
+
+/*프로필 사진 업로드*/
+.image_area {
+    border: 3px solid #ebebeb;
+    margin-bottom: 10px;
+    width: 270px;
+    height: 300px;
+}
+
+.profile_title {
+    margin-right: 600px;
+}
+
+.profile label {
+    display: inline-block;
+    padding: .5em .75em;
+    color: #fff;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: darkred;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: darkred;
+    border-radius: .25em;
+}
+.profile input[type="file"] {  /* 파일 필드 숨기기 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
 }

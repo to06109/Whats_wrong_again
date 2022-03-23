@@ -20,6 +20,7 @@ function Home() {
     }
   };
   useEffect(Login_test, []);
+  console.log(showing)
 
 
   return (

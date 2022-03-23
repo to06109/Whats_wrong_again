@@ -35,7 +35,7 @@ function Login(props) {
     }).then(function (response) {
       // console.log(response)
       if (response.data == 'success') {
-
+        console.log(response)
         //로그인토큰 예시
         localStorage.setItem('login-token', email);
 
@@ -48,6 +48,9 @@ function Login(props) {
       //   localStorage.setItem('login-token', response.data['ACCESS_TOKEN']);
       // }
     })
+        .catch(error => {
+          alert("아이디가 존재하지 않습니다!")
+        })
   }
 
   return (

@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 import { Link, useHistory } from 'react-router-dom'
 import HomeSearch_login from '../components/Home/HomeSearch_login'
+import {error} from "bfj/src/events";
 
 function Register() {
   const [email, setEmail] = useState('')
@@ -55,6 +56,8 @@ function Register() {
         } else {
           alert('회원가입 실패!')
         }
+      }).catch(error => {
+            alert("중복된 아이디가 있습니다!")
       })
     }
   }
